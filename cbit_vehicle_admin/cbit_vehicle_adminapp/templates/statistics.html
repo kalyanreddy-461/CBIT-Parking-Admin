@@ -1,0 +1,59 @@
+{% load static %}
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <link rel="stylesheet" type="text/css" href="{% static 'vehicle/css/style.css' %}">
+
+  	<title>Vehicle Management</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
+		
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  </head>
+  <body>
+		
+		<div class="wrapper d-flex align-items-stretch">
+			<nav id="sidebar">
+	  		<div class="img bg-wrap text-center py-4" style="background-image: url('{% static 'images/image3.jpg'%}')";>
+          <div class="user-logo">
+            <div class="img" style="background-image: url('{% static 'images/image4.png'%}')";></div>
+            <h3>VEHICLE MANAGEMENT </h3>
+            <h3>CBIT</h3>
+          </div>
+        </div>
+        <ul class="list-unstyled components mb-5">
+          <li>
+            <a href="register"><span class="fa fa-car"></span> Vehicle Registration </a>
+          </li>
+          <li>
+            <a href="fines"><span class="fa fa-inr"></span> Manage Fines</a>
+          </li>
+          <li>
+            <a href="dismiss"><span class="fa fa-ban"></span> Dismiss Vehicles </a>
+          </li>
+          <li>
+            <a href="statistics"><span class="fa fa-line-chart"></span> Statistics </a>
+          </li>
+          <li>
+            <a href="#"><span class="fa fa-sign-out"></span> Sign Out</a>
+          </li>
+        </ul>
+
+    	</nav>
+
+        <!-- Page Content  -->
+      <div id="content" class="p-4 p-md-5 pt-5">
+        Statistics
+      </div>
+		</div>
+
+    <script type="text/javascript" src="{%static 'vehicle/js/jquery.min.js' %}"></script>
+    <script type="text/javascript" src="{%static 'vehicle/js/popper.js' %}"></script>
+    <script type="text/javascript" src="{%static 'vehicle/js/bootstrap.min.js' %}"></script>
+    <script type="text/javascript" src="{%static 'vehicle/js/main.js' %}"></script>
+
+  </body>
+</html>
