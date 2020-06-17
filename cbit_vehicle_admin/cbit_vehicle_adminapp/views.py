@@ -4,13 +4,13 @@ import requests
 
 # Create your views here.
 def register(request):
-    return render(request,'index.html')
+    return render(request,'cbit_vehicle_adminapp/register.html')
 
 def dismiss(request):
-    return render(request,'dismiss.html')
+    return render(request,'cbit_vehicle_adminapp/dismiss.html')
 
 def fines(request):
-    return render(request,'fines.html')
+    return render(request,'cbit_vehicle_adminapp/fines.html')
 
 def statistics(request):
-    return render(request,'statistics.html')
+    return render(request,'cbit_vehicle_adminapp/statistics.html')

@@ -46,9 +46,12 @@
 
         <!-- Page Content  -->
       <div id="content" class="p-4 p-md-5 pt-5">
-        Register
+        {% block content %}
+        {% endblock %}
       </div>
-		</div>
+    
+    
+    </div>
 
     <script type="text/javascript" src="{%static 'vehicle/js/jquery.min.js' %}"></script>
     <script type="text/javascript" src="{%static 'vehicle/js/popper.js' %}"></script>
