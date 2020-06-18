@@ -1,5 +1,37 @@
 {% extends 'cbit_vehicle_adminapp/base.html' %}
 
 {% block content %}
-  REGISTER
+<div class="accordion" id="dashboard">
+  <div class="card">
+    <div class="card-header" id="headingOne">
+      <h2 class="mb-0">
+        <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+          Vehicle 1
+        </button>
+      </h2>
+    </div>
+
+    <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#dashboard">
+      <div class="card-body">
+        Vehicle 1 Details
+        <p class = text-center><a class="btn btn-secondary" href="#" role="button">Approve</a></p>
+      </div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-header" id="headingTwo">
+      <h2 class="mb-0">
+        <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+          Vehicle 2
+        </button>
+      </h2>
+    </div>
+    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#dashboard">
+      <div class="card-body">
+        Vehicle 2 Details
+        <p class = text-center><a class="btn btn-secondary" href="#" role="button">Approve</a></p>
+      </div>
+    </div>
+  </div>
+</div>
 {% endblock %}
