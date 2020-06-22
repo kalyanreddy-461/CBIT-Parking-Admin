@@ -1,0 +1,68 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+  <head>
+  	<title>index</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
+
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+		<link rel="stylesheet" href="{% static 'vehicle/css/style.css' %}">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+
+  </head>
+  <body>
+
+		<div class="wrapper d-flex align-items-stretch">
+			<nav id="sidebar">
+				<div class="custom-menu">
+					<button type="button" id="sidebarCollapse" class="btn btn-primary">
+	        </button>
+        </div>
+        <div class="img bg-wrap text-center py-4" style="background-image: url('{% static "images/image3.jpg"%}')";>
+  	  			<div class="user-logo">
+  	  				<div class="img" style="background-image: url('{% static "images/image4.ng"%}')";></div>
+  	  				<h3><b>VEHICLE MANAGEMENT </b></h3>
+              <h3><b>CBIT</b></h3>
+  	  			</div>
+  	  		</div>
+        <ul class="list-unstyled components mb-5">
+          <li class >
+            <a href="register"><span class="fa fa-car"></span>  Vehicle Registration </a>
+          </li>
+          <li>
+            <a href="fines"><span class="fa fa-inr"></span> Manage Fines</a>
+          </li>
+          <li>
+            <a href="dismiss"><i class="fa fa-ban"></i>Dismiss Vehicles </a>
+          </li>
+          <li>
+            <a href="regstatistics"><span class="fa fa-line-chart"></span>Statistics </a>
+          </li>
+
+        </ul>
+
+
+    	</nav>
+        <!-- Page Content  -->
+
+
+        <div id="content" class="p-4 p-md-5 pt-5">
+            {% block content %}
+            {% endblock %}
+
+        </div>
+
+		</div>
+
+    <script src="{% static 'vehicle/js/jquery.min.js' %}"></script>
+    <script src="{% static 'vehicle/js/popper.js' %}"></script>
+    <script src="{% static 'vehicle/js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'vehicle/js/main.js' %}"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+  </body>
+</html>
