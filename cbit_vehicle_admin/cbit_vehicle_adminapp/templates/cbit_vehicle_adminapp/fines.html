@@ -22,27 +22,33 @@
           </div>
         </nav>
       <br>
-      <form action='fines' method="get">
-      select date:<input type="date" name="date"><br><br>
-      <input type="submit">
-      </form>
+<center><h5><u>Details of the Users with Fines</u></h5></center>
       <div class="accordion" id="dashboard">
         <div class="card">
-          {% for payment_details in payment %}
+          {% for payment_details in payment1 %}
           <div class="card-header" id="heading{{forloop.counter}}">
             <h2 class="mb-0">
               <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapse{{forloop.counter}}" aria-expanded="false" aria-controls="collapse{{forloop.counter}}">
                 {{payment_details.user_id}}
               </button>
-              <h6 style="text-align:right">{{payment_details.date}}</h6>
+              <h6 style="text-align:right">{{payment_details.payment_date}}</h6>
             </h2>
           </div>
 
           <div id="collapse{{forloop.counter}}" class="collapse" aria-labelledby="heading{{forloop.counter}}" data-parent="#dashboard">
             <div class="card-body">
               user_id={{payment_details.user_id}}<br>
-              fine={{payment_details.fine}}
-              <p class = text-center><a class="btn btn-secondary" href="#" role="button">update payment status</a></p>
+              fine={{payment_details.fine}}<br>
+              type_of_request={{payment_details.type_of_request}}<br>
+              payment_date={{payment_details.payment_date}}<br>
+              Registration_id={{payment_details.Registration_id}}<br>
+              Request_id={{payment_details.request_id}}
+              <script type="text/javascript">
+    function confirmation() {
+      return confirm('Are you sure you want to update the payment status?');
+    }
+</script>
+<p class = text-center><a class="btn btn-secondary" href="#" role="button" onclick="return confirmation()">update payment status</a></p>
             </div>
           </div>
   {% endfor %}

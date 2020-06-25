@@ -31,13 +31,13 @@
 </style>
 </head>
 <body>
-     <h2>REGISTRATION STATISTICS</h2>
-     <form class="form-inline my-2 my-lg-0" action="{% url 'paystatistics' %}"  method="post">
+    <center><h5><u>Registration Statistics</u></h5></center>
+     <form class="form-inline my-2 my-lg-0" action="{% url 'paystatistic' %}"  method="post">
        {% csrf_token %}
-     <button class="btn btn-outline-success my-2 my-sm-0" type="submit">payments</button>
+     <button class="btn btn-outline-success my-2 my-sm-0" type="submit">>>payment statistics</button>
      </form>
      <br>
-     select date:<input type="date"><br><br>
+     select date: <input type="date">
      <input type="submit">
 
 
