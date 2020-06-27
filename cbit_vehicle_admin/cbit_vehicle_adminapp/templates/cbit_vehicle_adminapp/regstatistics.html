@@ -22,27 +22,52 @@
           </div>
         </nav>
       <br>
-
-      <head>
-<style>
-           .button{
-              color:blue;
-             }
-</style>
-</head>
 <body>
-    <center><h5><u>Registration Statistics</u></h5></center>
+    <center><h4><u>Registration Statistics</u></h4></center>
      <form class="form-inline my-2 my-lg-0" action="{% url 'paystatistic' %}"  method="post">
        {% csrf_token %}
      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">>>payment statistics</button>
      </form>
      <br>
-     select date: <input type="date">
+     <form action='regstatistics' method="get">
+     select date :<input type="date" name="date">
      <input type="submit">
+     </form>
+     <br>
+     {% for message in messages%}
+     <center><span class='fa fa-exclamation-circle' style='font-size:20px;color:red'><h6><b>{{message}}</b></h6></span>
+</center>{% endfor %}
+     <div class="accordion" id="dashboard">
+       <div class="card">
+         {% for i in r %}
+         <div class="card-header" id="heading{{forloop.counter}}">
+           <h2 class="mb-0">
+             <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapse{{forloop.counter}}" aria-expanded="false" aria-controls="collapse{{forloop.counter}}">
+                <h6 style='font-size:18px;'>&#9654;{{ i.user_id }}-{{i.branch_name}}</h6>
+             </button>
+           </h2>
+         </div>
 
+         <div id="collapse{{forloop.counter}}" class="collapse" aria-labelledby="heading{{forloop.counter}}" data-parent="#dashboard">
+           <div class="card-body">
+             <ul>
+            <li>User ID : {{i.user_id}}</li>
+            <li>Registration ID : {{i.reg_id}}</li>
+             <li>Name : {{i.full_name}}</li>
+             <li>Address : {{i.home_address}}</li>
+             <li>Licence No : {{i.licence_no}}</li>
+             <li>Branch Name : {{i.branch_name}}</li>
+             <li>Vehicle Type : {{i.vehicle_type}}</li>
+             <li>ChassisNo : {{i.chassis_no}}</li>
+             <li>Vehicle No : {{i.vehicle_no}}</li>
+             <li>Registration Status : {{i.reg_status}}</li>
+             <li>Registration Date : {{i.reg_date}}</li>
+             <li>Updated Date : {{i.updated_date}}</li>
+             <ul>
+             </div>
+         </div>
+     {% endfor %}
+       </div>
+     </div>
 
-</body>
-
-
-
-{% endblock %}
+     {% endblock %}

@@ -1,0 +1,64 @@
+{% extends 'cbit_vehicle_adminapp/base.html' %}
+{% load static %}
+{% block content %}
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+          <div class="container-fluid">
+
+            <a class="navbar-brand" href="#">
+             <img src="{% static 'images/image4.png '%}" alt="logo" style="width:30px;">
+            </a>
+
+            <center><h5><b>Dismiss Vehicles</b></h5></center>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul class="nav navbar-nav ml-auto">
+                <li>
+                  <form class="form-inline my-2 my-lg-0" action="{% url 'login' %}">
+          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Logout</button>
+        </form>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </nav>
+      <br>
+
+        <h5 style="color:red;text-align:center"><u>List of Dismissed vehicles</u></h5><br>
+        
+        {% for message in messages%}
+        <center><span class='fa fa-exclamation-triangle' style='font-size:20px;color:blue'><h6><b>{{message}}</b></h6></span></center>
+        {% endfor %}
+        <form class="form-inline my-2 my-lg-0" action="{% url 'dismiss1' %}"  method="post">
+          {% csrf_token %}
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">&lt&ltDismiss Vehicle</button>
+        </form>
+        <div class="accordion" id="dashboard">
+          <div class="card">
+            {% for i in dismiss %}
+            <div class="card-header" id="heading{{ forloop.counter }}">
+              <h2 class="mb-0">
+                <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapse{{ forloop.counter }}" aria-expanded="false" aria-controls="collapse{{ forloop.counter }}">
+                  <h6 style='font-size:18px;'>&#9654;{{ i.user_id }}-{{i.branch_name}}</h6>
+                </button>
+                <h6 style="text-align:right">{{i.reg_date}}</h6>
+              </h2>
+            </div>
+
+            <div id="collapse{{ forloop.counter }}" class="collapse" aria-labelledby="heading{{ forloop.counter }}" data-parent="#dashboard">
+              <div class="card-body">
+                <ul>
+                <li>Name : {{i.full_name}}</li>
+                <li>Registration ID : {{i.reg_id}}</li>
+                <li>Vehicle number : {{i.vehicle_no}}</li>
+                <li>Licence number : {{i.licence_no}}</li>
+                <li>Vehicle type : {{i.vehicle_type}}</li>
+                <li>Home address : {{i.home_address}}</li>
+                </ul>
+                <br>
+              </div>
+            </div>
+            {% endfor %}
+          </div>
+        </div>
+
+        {% endblock %}

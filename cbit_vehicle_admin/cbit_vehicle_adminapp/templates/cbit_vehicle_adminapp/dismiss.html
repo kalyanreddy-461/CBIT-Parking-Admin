@@ -23,4 +23,23 @@
         </nav>
       <br>
 
+      <h5 style="color:red;text-align:center"><u>Dismissal Of Vehicles</u></h5><br>
+
+              <form action="dismiss" method="get">
+                  {% csrf_token %}
+              <center><h6>Enter the registration_id :<input type="number" name="reg_id"></h6><center><br>
+              <center><button type="submit" class="btn btn-outline-primary" style="margin-right:10px" onclick="return confirm('Are you sure you want to dismiss?');">dismiss</button></center>
+            </form>
+            {% for message in messages%}
+            <script>
+              alert("{{message}}");
+            </script>
+       {% endfor %}
+<br><br>
+             <form class="form-inline my-2 my-lg-0" action="{% url 'dismiss2' %}"  method="post">
+               {% csrf_token %}
+             <button class="btn btn-outline-success my-2 my-sm-0" type="submit">>>list of dismissed vehicles</button>
+             </form>
+
+
 {% endblock %}
