@@ -29,7 +29,7 @@ def login(request):
     else:
         return render(request,"cbit_vehicle_adminapp/login.html")
 
-
+@cache_control(no_cache=True, must_revalidate=True, no_store=True)
 def register(request):
     global token1
     url = 'https://cosc-vehicle.herokuapp.com/pending'
@@ -45,15 +45,17 @@ def register(request):
         context = {'pending' : pending}
         return render(request,'cbit_vehicle_adminapp/register.html',context)
 
+@cache_control(no_cache=True, must_revalidate=True, no_store=True)
 def dismiss(request):
     global token1
     url = 'https://cosc-vehicle.herokuapp.com/dismiss'
-    reg_id=request.GET['reg_id']
+    reg_id=request.GET.get('reg_id')
 
     requests.put(url,headers = {'Authorization':'Bearer {}'.format(token1)},data={'reg_id' : reg_id})
     messages.info(request,"successfully dismissed")
     return redirect('dismiss1')
 
+@cache_control(no_cache=True, must_revalidate=True, no_store=True)
 def dismiss2(request):
     global token1
     url = 'https://cosc-vehicle.herokuapp.com/dismiss'
@@ -65,14 +67,32 @@ def dismiss2(request):
         context = {'dismiss' : dismiss}
         return render(request,'cbit_vehicle_adminapp/listdismiss.html',context)
 
+def dismiss3(request):
+    global token1
+    url = 'https://cosc-vehicle.herokuapp.com/vechreg'
+    reg_id=request.GET['reg_id']
+    data=requests.get(url,headers = {'Authorization':'Bearer {}'.format(token1)},data={'reg_id' : reg_id})
+    r=data.json()
+    print(len(r))
+    if (len(r)==0 or reg_id==''):
+        messages.info(request,"invalid registration_id")
+        return redirect('dismiss1')
+    else:
+        print(r)
+        context={'details':r}
+        return render(request,'cbit_vehicle_adminapp/dismiss.html',context)
 
+
+@cache_control(no_cache=True, must_revalidate=True, no_store=True)
 def dismiss1(request):
     return render(request,'cbit_vehicle_adminapp/dismiss.html')
 
+@cache_control(no_cache=True, must_revalidate=True, no_store=True)
 def listdismiss(request):
     return render(request,'cbit_vehicle_adminapp/listdismiss.html')
 
 
+@cache_control(no_cache=True, must_revalidate=True, no_store=True)
 def fines(request):
     global token1
     pay = request.GET.get('pay')
@@ -103,15 +123,19 @@ def fines(request):
         context = {'payment1':payment1}
         return render(request,'cbit_vehicle_adminapp/fines.html',context)
 
+@cache_control(no_cache=True, must_revalidate=True, no_store=True)
 def fine(request):
     return render(request,'cbit_vehicle_adminapp/fines.html')
 
+@cache_control(no_cache=True, must_revalidate=True, no_store=True)
 def paystatistic(request):
     return render(request,'cbit_vehicle_adminapp/paystatistics.html')
 
+@cache_control(no_cache=True, must_revalidate=True, no_store=True)
 def regstatistic(request):
     return render(request,'cbit_vehicle_adminapp/regstatistics.html')
 
+@cache_control(no_cache=True, must_revalidate=True, no_store=True)
 def paystatistics(request):
     global token1
     date=request.GET['date']
@@ -146,6 +170,7 @@ def paystatistics(request):
             context = {'payment':payment}
             return render(request,'cbit_vehicle_adminapp/paystatistics.html',context)
 
+@cache_control(no_cache=True, must_revalidate=True, no_store=True)
 def regstatistics(request):
     global token1
     date=request.GET['date']

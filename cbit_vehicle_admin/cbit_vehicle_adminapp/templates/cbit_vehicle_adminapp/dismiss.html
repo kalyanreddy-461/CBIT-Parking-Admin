@@ -25,11 +25,31 @@
 
       <h5 style="color:red;text-align:center"><u>Dismissal Of Vehicles</u></h5><br>
 
-              <form action="dismiss" method="get">
+              <form action="dismiss3" method="get">
                   {% csrf_token %}
-              <center><h6>Enter the registration_id :<input type="number" name="reg_id"></h6><center><br>
-              <center><button type="submit" class="btn btn-outline-primary" style="margin-right:10px" onclick="return confirm('Are you sure you want to dismiss?');">dismiss</button></center>
-            </form>
+              <center><h5>Enter the registration_id :
+                                     <input type="number"  name="reg_id" class="col-3" style="font-size:15px;"></h5><h6><input type="submit"></h6> <br></center>
+
+              </form>
+<br>
+            {% for i in details %}
+            <b><h5>Details of User with Reg_ID:{{i.reg_id}}</h5></b>
+                    <ul style="color:black;">
+                    <li>Name= {{i.full_name}}</li>
+                    <li>Branch={{i.branch_name}}</li>
+                    <li>User_id={{i.user_id}}</li>
+                    <li>Licence Number={{i.licence_no}}</li>
+                    <li>Vehicle Number={{i.vehicle_no}}</li>
+                    <li>Vehicle Type={{i.vehicle_type}}</li>
+                    </ul>
+
+                    <form action="dismiss" method="get">
+                        {% csrf_token %}
+                    <center><button name="reg_id" type="submit" value="{{i.reg_id}}" onclick="return confirm('Are you sure you want to dismiss?');">dismiss</button></center>
+                  </form>
+                    {%endfor%}
+
+
             {% for message in messages%}
             <script>
               alert("{{message}}");

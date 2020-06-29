@@ -9,6 +9,7 @@ urlpatterns = [
     path('dismiss',views.dismiss,name='dismiss'),
     path('dismiss1',views.dismiss1,name='dismiss1'),
     path('dismiss2',views.dismiss2,name='dismiss2'),
+    path('dismiss3',views.dismiss3,name='dismiss3'),
     path('listdismiss',views.listdismiss,name='listdismiss'),
     path('fines',views.fines,name='fines'),
     path('fine',views.fine,name='fine'),
